@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "442584369898",
+    "firebase_url": "https://rainofnotes-47d35.firebaseio.com",
+    "project_id": "rainofnotes-47d35",
+    "storage_bucket": "rainofnotes-47d35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442584369898:android:4430236657a118809fa593",
+        "android_client_info": {
+          "package_name": "com.example.rainofnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442584369898-9alh7a30m67gb3j2srec3cub2o44fgtf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rainofnotes",
+            "certificate_hash": "0462093f2524e9853f399fe183798d8a31f1106b"
+          }
+        },
+        {
+          "client_id": "442584369898-3tsrcqaqotrl4ptjgc6g8bj8gimmnuo0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQOfCNh1DYerwvOX2IAno78re0a6d0cDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442584369898-3tsrcqaqotrl4ptjgc6g8bj8gimmnuo0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
