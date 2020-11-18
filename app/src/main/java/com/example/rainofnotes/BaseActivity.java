@@ -51,10 +51,12 @@ public class BaseActivity extends AppCompatActivity {
         collectionReference = db.collection(COLLECTION_NAME);
     }
 
+    // Mensaje 
     protected void makeSimpleToast(String text, int duration){
         Toast.makeText(this, text, duration).show();
     }
 
+    // Mensaje de alerta
     protected void makeSimpleAlertDialog(String title, String text){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(text);

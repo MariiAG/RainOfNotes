@@ -35,6 +35,7 @@ public class ListActivity extends BaseActivity {
         init();
         super.init();
 
+        //actividad para crear nota
         fab_list_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +43,7 @@ public class ListActivity extends BaseActivity {
             }
         });
 
+        //evento listar
         lv_list_listNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -53,6 +55,7 @@ public class ListActivity extends BaseActivity {
         fab_list_create = findViewById(R.id.fab_list_create);
         lv_list_listNote = findViewById(R.id.lv_list_listNote);
     }
+    // clase para obtener las notas
     protected void getNote(){
         if (collectionReference != null){
             collectionReference.get()
@@ -69,7 +72,7 @@ public class ListActivity extends BaseActivity {
                                     if (modelArrayList.size() > 0){
                                         paintNota(modelArrayList);
                                     }else {
-                                        makeSimpleAlertDialog("Alerta", "No se ha encontrado ninguna la nota");
+                                        makeSimpleAlertDialog("Alerta", "No se ha encontrado ninguna nota");
                                     }
                                 }else {
                                     makeSimpleAlertDialog("Alerta", "No se ha encontrado la nota");
@@ -80,10 +83,10 @@ public class ListActivity extends BaseActivity {
                         }
                     });
         }else{
-            makeSimpleToast("Error de base se datos", 1);
+            makeSimpleToast("Error en la base se datos", 1);
         }
     }
-
+    // Adaptador
     private void paintNota(ArrayList<NoteModel> modelArrayList) {
         adapter = new NoteAdapter(this, modelArrayList);
         lv_list_listNote.setAdapter(adapter);
