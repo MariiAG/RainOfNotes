@@ -1,5 +1,6 @@
 package com.example.rainofnotes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.rainofnotes.adapters.NoteAdapter;
@@ -35,6 +36,9 @@ public class ListActivity extends BaseActivity {
         init();
         super.init();
 
+        final String tit = model.getTitle();
+        final String con = model.getContent();
+
         //actividad para crear nota
         fab_list_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +51,13 @@ public class ListActivity extends BaseActivity {
         lv_list_listNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                model = modelArrayList.get(position);
+                makeSimpleToast("model" + model.getTitle() + model.getContent(), 2);
+                Intent intent = new Intent(ListActivity.this, DetailsActivity.class);
+                intent.putExtra("id", model.getId());
+                intent.putExtra("title", model.getTitle());
+                intent.putExtra("content", model.getContent());
+                startActivity(intent);
             }
         });
     }
@@ -55,7 +65,7 @@ public class ListActivity extends BaseActivity {
         fab_list_create = findViewById(R.id.fab_list_create);
         lv_list_listNote = findViewById(R.id.lv_list_listNote);
     }
-    // clase para obtener las notas
+
     protected void getNote(){
         if (collectionReference != null){
             collectionReference.get()
