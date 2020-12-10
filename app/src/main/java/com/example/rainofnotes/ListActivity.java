@@ -52,9 +52,9 @@ public class ListActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 model = modelArrayList.get(position);
-                makeSimpleToast("model" + model.getTitle() + model.getContent(), 2);
+                //makeSimpleAlertDialog("model", "nota " + model.getIdFbN() + model.getTitle() + model.getContent());
                 Intent intent = new Intent(ListActivity.this, DetailsActivity.class);
-                intent.putExtra("id", model.getId());
+                intent.putExtra("idFirebase", model.getIdFbN());
                 intent.putExtra("title", model.getTitle());
                 intent.putExtra("content", model.getContent());
                 startActivity(intent);
@@ -77,6 +77,7 @@ public class ListActivity extends BaseActivity {
                                     modelArrayList= new ArrayList<>();
                                     for (QueryDocumentSnapshot snapshot : task.getResult()){
                                         model = snapshot.toObject(NoteModel.class);
+                                        model.setIdFbN(snapshot.getId());
                                         modelArrayList.add(model);
                                     }
                                     if (modelArrayList.size() > 0){

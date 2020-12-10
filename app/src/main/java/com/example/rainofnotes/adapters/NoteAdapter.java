@@ -1,16 +1,21 @@
 package com.example.rainofnotes.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+
 import com.example.rainofnotes.R;
 import com.example.rainofnotes.models.NoteModel;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class NoteAdapter extends BaseAdapter {
 
@@ -37,6 +42,7 @@ public class NoteAdapter extends BaseAdapter {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View viewItemNota = convertView;
@@ -52,6 +58,11 @@ public class NoteAdapter extends BaseAdapter {
 
         tv_note_list_item_title.setText(getItem(position).getTitle());
         tv_note_list_item_content.setText(getItem(position).getContent());
+
+        String[] color = {"#1b5e20", "#b9f6ca", "#69f0ae", "#00e676", "#00c853"};
+        Random r = new Random();
+        int randomNumber = r.nextInt(color.length);
+        viewItemNota.setBackgroundColor(Color.parseColor(color[randomNumber]));
 
         return viewItemNota;
     }

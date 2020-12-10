@@ -21,12 +21,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Notation;
+
 public class DetailsActivity extends BaseActivity {
 
     private FloatingActionButton fab_details_list;
     private TextView et_details_title, et_details_content;
     private Button btn_details_edit, btn_details_update;
-    private static String title, content, id;
+    private static String title, content, idFirebase;
     private DocumentReference documentReference;
 
     @Override
@@ -42,17 +44,17 @@ public class DetailsActivity extends BaseActivity {
         et_details_title.setEnabled(false);
         et_details_content.setEnabled(false);
 
-        id = getIntent().getStringExtra("id");
+        idFirebase = getIntent().getStringExtra("idFirebase");
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
 
-        if (title != null && content != null){
+        /*if (title != null && content != null){
             et_details_title.setText(title);
             et_details_content.setText(content);
             //makeSimpleAlertDialog("Acceso", "Nota" + model.getTitle());
         }else{
             makeSimpleAlertDialog("Error", "Nota vacía");
-        }
+        }*/
 
         fab_details_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +74,11 @@ public class DetailsActivity extends BaseActivity {
         btn_details_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update(id);
+                if (idFirebase != null){
+                    update(idFirebase);
+                }else {
+                    makeSimpleToast("No se estan recibiendo datos", 5);
+                }
             }
         });
     }
@@ -84,25 +90,39 @@ public class DetailsActivity extends BaseActivity {
         btn_details_update = findViewById(R.id.btn_details_update);
     }
 
-    private void update(String id){
-            documentReference = db.collection(COLLECTION_NAME).document(id);
+    private void update(String idFirebase){
+            documentReference = db.collection(COLLECTION_NAME).document(idFirebase);
             documentReference.get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            DocumentSnapshot document = task.getResult();
-                            model = document.toObject(NoteModel.class);
-                            model.setId(document.getId());
+                            DocumentSnapshot snapshot = task.getResult();
+                            model = snapshot.toObject(NoteModel.class);
+                            model.setIdFbN(snapshot.getId());
                             if (model != null){
                                 et_details_title.setText(model.getTitle());
                                 et_details_content.setText(model.getContent());
+                                makeSimpleToast("nota" + et_details_content.getText() + et_details_title.getText(), 2);
                                 goToList();
                             }
                             else {
-                                makeSimpleAlertDialog("Error", "No se pudo actualizar la Nota");
+                                updateNota(model);
                             }
                         }
                     });
+    }
+
+    private void updateNota(NoteModel model){
+        documentReference = db.collection(COLLECTION_NAME).document(model.getIdFbN());
+        documentReference.set(model)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            makeSimpleToast("UPDATE correcto", 5);
+                        }
+                    }
+                });
     }
 
 }
