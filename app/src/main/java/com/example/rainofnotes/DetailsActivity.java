@@ -47,13 +47,24 @@ public class DetailsActivity extends BaseActivity {
         super.init();
         init();
 
+        et_details_title.setEnabled(false);
+        et_details_content.setEnabled(false);
+
         final String id = getIntent().getStringExtra("idFirebase");
         if(id != null){
             et_details_title.setText(id);
             update(id);
         }else{
-            et_details_title.setText("No recibimos nada");
+            et_details_title.setText("La nota esta vacia");
         }
+
+        btn_details_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et_details_title.setEnabled(true);
+                et_details_content.setEnabled(true);
+            }
+        });
 
         btn_details_update.setOnClickListener(new View.OnClickListener() {
             @Override
