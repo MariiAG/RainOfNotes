@@ -55,8 +55,8 @@ public class ListActivity extends BaseActivity {
                 //makeSimpleAlertDialog("model", "nota " + model.getIdFbN() + model.getTitle() + model.getContent());
                 Intent intent = new Intent(ListActivity.this, DetailsActivity.class);
                 intent.putExtra("idFirebase", model.getIdFbN());
-                intent.putExtra("title", model.getTitle());
-                intent.putExtra("content", model.getContent());
+                //intent.putExtra("title", model.getTitle());
+                //intent.putExtra("content", model.getContent());
                 startActivity(intent);
             }
         });

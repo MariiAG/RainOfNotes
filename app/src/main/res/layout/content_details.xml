@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202"
+        app:layout_constraintVertical_bias="0.25"
         app:srcCompat="@drawable/ic_history_edu_black_18dp" />
 
     <EditText
@@ -68,24 +68,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_details_title"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintVertical_bias="0.196" />
 
     <TextView
         android:id="@+id/textView"
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:fontFamily="@font/atomic_age"
         android:gravity="center|bottom"
-        android:background="@color/colorPrimary"
+        android:padding="6dp"
         android:text="@string/app_name"
+        android:textColor="#000000"
         android:textSize="24sp"
-        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="24dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_details_edit"
@@ -95,7 +95,7 @@
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-black"
         android:text="Editar"
-        android:textColor="@color/colorWhite"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_details_content"
@@ -110,7 +110,7 @@
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-black"
         android:text="Guardar"
-        android:textColor="@color/colorWhite"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.563"

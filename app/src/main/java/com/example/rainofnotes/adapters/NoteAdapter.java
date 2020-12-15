@@ -59,7 +59,7 @@ public class NoteAdapter extends BaseAdapter {
         tv_note_list_item_title.setText(getItem(position).getTitle());
         tv_note_list_item_content.setText(getItem(position).getContent());
 
-        String[] color = {"#1b5e20", "#b9f6ca", "#69f0ae", "#00e676", "#00c853"};
+        String[] color = {"#e8f5e9", "#c8e6c9", "#a5d6a7", "#81c784", "#66bb6a"};
         Random r = new Random();
         int randomNumber = r.nextInt(color.length);
         viewItemNota.setBackgroundColor(Color.parseColor(color[randomNumber]));
